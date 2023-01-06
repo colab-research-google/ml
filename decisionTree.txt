@@ -1,0 +1,19 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Nov 12 09:50:33 2022
+
+@author: Administrator
+"""
+
+import pandas as pd
+from sklearn.tree import DecisionTreeRegressor
+
+df=pd.read_excel("Play.xlsx")
+
+x=df.iloc[:,:-1].values
+y=df['playtennis'].values
+
+dec_tree=DecisionTreeRegressor()
+dec_tree.fit(x,y)
+print("Prediction:",dec_tree.predict([[2,6,2,10]]))
+print("Accuracy:",dec_tree.score(x,y))

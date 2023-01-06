@@ -1,0 +1,13 @@
+#Q5Write a python program to implement multiple Linear Regression for a given dataset.
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+df = pd.read_excel('House.xlsx')
+x = df.iloc[:,:-1].values
+y = df['Price'].values
+xtr,xte,ytr,yte = train_test_split(x,y,test_size=0.2,random_state=1)
+reg = LinearRegression()
+reg.fit(xtr,ytr)
+print("House Price of Area 8000 = ",reg.predict([[8000,10,10]]))
+print("Accuracy of the Model = ",reg.score(xtr,ytr))

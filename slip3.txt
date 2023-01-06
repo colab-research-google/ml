@@ -1,0 +1,13 @@
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import LabelEncoder
+from sklearn.impute import SimpleImputer
+
+df=pd.read_excel("simple_regression.xlsx")
+x=df.iloc[:,:-1].values
+y=df["price"].values
+
+si=SimpleImputer(missing_values=np.nan,strategy="mean")
+si.fit(x[:,1:2])
+x[:,1:2]=si.fit_transform(x[:,1:2])
+print(x)

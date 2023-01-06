@@ -1,0 +1,6 @@
+import pandas as pd
+data = pd.read_csv("Maths.csv")
+print(data)
+df = data.dropna(axis = 0, how = 'any', inplace = False)
+print(df)
+

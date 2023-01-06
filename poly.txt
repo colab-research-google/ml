@@ -1,0 +1,31 @@
+
+
+import pandas as pd
+from sklearn .model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import PolynomialFeatures
+
+df=pd.read_excel("House.xlsx")
+x=df.iloc[:,:-1].values
+y=df['price'].values
+
+xtr,xte,ytr,yte=train_test_split(x,y,test_size=0.2,random_state=1)
+
+poly=PolynomialFeatures(degree=3)
+x_poly=poly.fit_transform(xtr)
+
+reg=LinearRegression()
+xtr=xtr.reshape(-1,1)
+xte=xte.reshape(-1,1)
+
+reg.fit(x_poly,ytr)
+print(reg.score(x_poly, ytr))
+
+'''
+plt.title("Poly Linear Regression")
+plt.xlabel("Area")
+plt.ylabel("Price")
+plt.scatter(xtr,ytr,color="red")
+plt.plot(xtr,reg.predict(xtr),color="blue")
+plt.show()
+'''
