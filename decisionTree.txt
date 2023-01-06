@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Nov 12 09:50:33 2022
 
-@author: Administrator
-"""
 
 import pandas as pd
 from sklearn.tree import DecisionTreeRegressor
